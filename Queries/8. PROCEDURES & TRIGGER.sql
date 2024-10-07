@@ -151,22 +151,28 @@ CREATE TABLE customer_audit (
 
 
 CREATE TRIGGER trg_after_insert_customers
-ON customers
-AFTER INSERT
-AS
-BEGIN
-    -- Insertar el ID del nuevo cliente y la fecha actual en la tabla de auditoría
-    INSERT INTO customer_audit (customer_id, inserted_at)
-    SELECT i.customer_id, GETDATE()
-    FROM inserted i;
-END;
+	ON customers
+		AFTER INSERT
+	AS
+	BEGIN
+		-- Insertar el ID del nuevo cliente y la fecha actual en la tabla de auditoría
+		INSERT INTO customer_audit (customer_id, inserted_at)
+		SELECT i.customer_id, GETDATE()
+		FROM inserted i;
+	END;
 
 --- Check
 INSERT INTO customers (customer_id, name, lastName, phone, age, birthdate, genre, earnings, expenditures, profession_id, city_id)
-VALUES (10, 'John', 'Doe', '555-1234', 30, '1993-04-16', 'M', 50000, 20000, 1, 101);
+VALUES (11, 'John', 'Doe', '555-1234', 30, '1993-04-16', 'M', 50000, 20000, 1, 101);
 
 
 SELECT * FROM customer_audit;
+SELECT * FROM customers;
+
+
+
+
+
 
 
 

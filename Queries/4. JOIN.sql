@@ -82,11 +82,8 @@ SELECT CONCAT(c.name, ' ', c.lastName) AS completed_name, p.name AS profession_n
 	WHERE age > 30 AND ci.name = 'Cali'
 
 
-/*-------------------- LEFT/RIGHT INNER JOIN --------------------*/
+/*-------------------- LEFT/RIGHT JOIN --------------------*/
 
-SELECT * FROM dbo.customers AS c 
-		INNER JOIN dbo.professions AS p
-			ON c.profession_id = p.profession_id
 
 -- LEFT OUTER JOIN: Devuelve todas las filas de la tabla de la izquierda (customers), y las filas coincidentes de la tabla de la derecha (professions). Si no hay coincidencia, las columnas de professions contendrán NULL   
 SELECT * FROM dbo.customers AS c 
@@ -112,7 +109,6 @@ SELECT * FROM dbo.customers AS c
 -- CROSS JOIN: Devuelve el producto cartesiano de las dos tablas, lo que significa que cada fila de la tabla customers se combina con todas las filas de la tabla professions.
 SELECT * FROM dbo.customers AS c 
 		CROSS JOIN dbo.professions AS p;
-
 
 
 /*-------------------------- ANTI JOIN ----------------------------*/
